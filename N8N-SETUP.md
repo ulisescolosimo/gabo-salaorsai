@@ -14,7 +14,7 @@ n8n es una plataforma de automatización que permite crear flujos de trabajo (wo
 
 **URL del Webhook:**
 ```
-https://orsai.app.n8n.cloud/webhook-test/2ef6c45f-ef60-456b-b1c5-e8d8a7249193
+https://orsai.app.n8n.cloud/webhook/2ef6c45f-ef60-456b-b1c5-e8d8a7249193
 ```
 
 ---
@@ -103,7 +103,7 @@ Cuando alguien se inscribe, se hace un POST al webhook con la siguiente estructu
 ### Desde el navegador (DevTools Console):
 
 ```javascript
-fetch('https://orsai.app.n8n.cloud/webhook-test/2ef6c45f-ef60-456b-b1c5-e8d8a7249193', {
+fetch('https://orsai.app.n8n.cloud/webhook/2ef6c45f-ef60-456b-b1c5-e8d8a7249193', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({

@@ -1,7 +1,7 @@
 import { Inscripto, Show } from '../types';
 
 // Webhook de n8n para envío de emails
-const N8N_WEBHOOK_URL = 'https://orsai.app.n8n.cloud/webhook-test/2ef6c45f-ef60-456b-b1c5-e8d8a7249193';
+const N8N_WEBHOOK_URL = 'https://orsai.app.n8n.cloud/webhook/2ef6c45f-ef60-456b-b1c5-e8d8a7249193';
 
 // Formatear fecha del evento para n8n
 const formatFechaEvento = (show: Show): string => {
