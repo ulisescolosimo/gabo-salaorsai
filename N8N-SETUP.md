@@ -265,3 +265,4 @@ En el campo "Cuerpo del Email" de los shows, puedes usar:
 
 ¿Necesitas ayuda para configurar el workflow en n8n?
 
+

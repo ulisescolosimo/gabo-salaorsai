@@ -19,3 +19,4 @@ SELECT email, nombre, activo,
 FROM administradores
 WHERE email = 'gabo@orsai.org';
 
+

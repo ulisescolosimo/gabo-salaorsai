@@ -132,3 +132,4 @@ Tu proyecto ahora está conectado a Supabase. Todos los datos se guardarán en l
 - [Row Level Security (RLS)](https://supabase.com/docs/guides/auth/row-level-security)
 - [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript/introduction)
 
+
