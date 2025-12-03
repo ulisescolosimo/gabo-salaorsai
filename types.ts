@@ -19,6 +19,7 @@ export interface Inscripto {
   telefono?: string;
   show_id: string;
   show_titulo?: string; // For CSV export convenience
+  cantidad_entradas: number; // 1 o 2 entradas
   fecha_inscripcion: string;
   created_at: string;
 }

@@ -193,6 +193,12 @@ export const db = {
       throw new Error('Nombre y Apellido son obligatorios.');
     }
 
+    // Validar cantidad de entradas
+    const cantidadEntradas = data.cantidad_entradas || 1;
+    if (cantidadEntradas < 1 || cantidadEntradas > 2) {
+      throw new Error('Debes seleccionar entre 1 y 2 entradas.');
+    }
+
     // Verificar que el show existe y tiene cupo disponible
     const show = await db.getShowById(data.show_id);
     if (!show) {
@@ -200,6 +206,11 @@ export const db = {
     }
     if (show.cupo_disponible <= 0) {
       throw new Error('Lo sentimos, el cupo para este show está completo.');
+    }
+    if (show.cupo_disponible < cantidadEntradas) {
+      throw new Error(
+        `Solo quedan ${show.cupo_disponible} lugar${show.cupo_disponible === 1 ? '' : 'es'} disponible${show.cupo_disponible === 1 ? '' : 's'}. Por favor selecciona ${show.cupo_disponible === 1 ? '1 entrada' : show.cupo_disponible + ' entradas'}.`
+      );
     }
 
     // Verificar que el email no esté ya inscripto en este show
@@ -227,6 +238,7 @@ export const db = {
       email: data.email,
       telefono: data.telefono || '',
       show_id: data.show_id,
+      cantidad_entradas: cantidadEntradas,
       fecha_inscripcion: new Date().toISOString(),
     };
 
@@ -275,6 +287,7 @@ export const db = {
         telefono: inscripto.telefono,
         show_id: inscripto.show_id,
         show_titulo: inscripto.shows?.titulo || 'Show Eliminado',
+        cantidad_entradas: inscripto.cantidad_entradas,
         fecha_inscripcion: inscripto.fecha_inscripcion,
         created_at: inscripto.created_at,
       })) || []

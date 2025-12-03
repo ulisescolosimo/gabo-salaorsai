@@ -42,6 +42,7 @@ export const RegistrationsManager: React.FC = () => {
       Apellido: i.apellido,
       Email: i.email || '',
       Teléfono: i.telefono || '',
+      'Cantidad Entradas': i.cantidad_entradas,
       'Show Elegido': i.show_titulo || 'N/A',
       'Fecha Inscripción': new Date(i.fecha_inscripcion).toLocaleString()
     }));
@@ -83,13 +84,14 @@ export const RegistrationsManager: React.FC = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Inscripto</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contacto</th>
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Entradas</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Show</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {filteredInscriptos.length === 0 ? (
                 <tr>
-                    <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                    <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
                         No hay inscriptos para mostrar.
                     </td>
                 </tr>
@@ -105,6 +107,11 @@ export const RegistrationsManager: React.FC = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">{insc.email}</div>
                         <div className="text-sm text-gray-500">{insc.telefono || '-'}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-center">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                          {insc.cantidad_entradas} {insc.cantidad_entradas === 1 ? 'entrada' : 'entradas'}
+                        </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {insc.show_titulo}

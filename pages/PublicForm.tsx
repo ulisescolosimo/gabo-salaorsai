@@ -29,6 +29,7 @@ export const PublicForm: React.FC = () => {
     email: '',
     telefono: '',
     show_id: '',
+    cantidad_entradas: 1,
   });
 
   useEffect(() => {
@@ -70,6 +71,7 @@ export const PublicForm: React.FC = () => {
         email: formData.email,
         telefono: formData.telefono,
         show_id: formData.show_id,
+        cantidad_entradas: formData.cantidad_entradas,
       });
 
       // 2. Send Confirmation Email
@@ -132,14 +134,22 @@ export const PublicForm: React.FC = () => {
     <>
       <ToastContainer toasts={toasts} onClose={dismiss} />
       
-      <div className="max-w-3xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl mb-4">
-            Próximos Eventos
+          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-4xl mb-4">
+            Reservá tus entradas para la Sala Orsai.
           </h1>
-          <p className="text-lg text-gray-600">
-            Reserva tu lugar para las mejores experiencias en Sala Orsai.
-          </p>
+          <div className="text-base text-gray-600 space-y-3 max-w-3xl mx-auto">
+            <p className="font-medium">
+              Invitaciones exclusivas para miembros de Comunidad Orsai.
+            </p>
+            <p>
+              Simplemente completá el formulario. Si ya lo hiciste, llegá 15 minutos antes de la función a la puerta de la Sala Casals en el Paseo La Plaza. Te resultará más cómodo entrar por Montevideo 310.
+            </p>
+            <p>
+              Por favor, reservá solo si estás seguro de que podés venir. <br /> Así le das la oportunidad a otra persona de disfrutar el evento.
+            </p>
+          </div>
         </div>
 
         <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
@@ -180,6 +190,38 @@ export const PublicForm: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
                 // Not required
               />
+            </div>
+
+            <div className="mt-6">
+              <label className="block text-sm font-medium text-gray-900 mb-3">
+                ¿Cuántas entradas necesitas? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-4">
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, cantidad_entradas: 1 })}
+                  className={`flex-1 py-4 px-6 rounded-lg border-2 transition-all font-medium ${
+                    formData.cantidad_entradas === 1
+                      ? 'bg-orange-50 border-orange-500 text-orange-700 ring-2 ring-orange-500'
+                      : 'bg-white border-gray-300 text-gray-700 hover:border-orange-300'
+                  }`}
+                >
+                  <div className="text-2xl font-bold mb-1">1</div>
+                  <div className="text-sm">Entrada individual</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, cantidad_entradas: 2 })}
+                  className={`flex-1 py-4 px-6 rounded-lg border-2 transition-all font-medium ${
+                    formData.cantidad_entradas === 2
+                      ? 'bg-orange-50 border-orange-500 text-orange-700 ring-2 ring-orange-500'
+                      : 'bg-white border-gray-300 text-gray-700 hover:border-orange-300'
+                  }`}
+                >
+                  <div className="text-2xl font-bold mb-1">2</div>
+                  <div className="text-sm">Con acompañante</div>
+                </button>
+              </div>
             </div>
 
             <div className="mt-8">

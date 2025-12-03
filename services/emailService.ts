@@ -39,6 +39,7 @@ export const emailService = {
             apellido: inscripto.apellido,
             email: inscripto.email,
             telefono: inscripto.telefono || '',
+            cantidad_entradas: inscripto.cantidad_entradas,
             fecha_inscripcion: inscripto.fecha_inscripcion,
           },
           // Datos del show
