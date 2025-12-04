@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Confirmación de inscripción</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family: Arial, Helvetica, sans-serif;">
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f4f4f4; padding:20px 0;">
+    <tr>
+      <td align="center">
+
+        <!-- Container principal -->
+        <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e0e0e0;">
+
+          <!-- ENCABEZADO -->
+          <tr>
+            <td style="padding:20px 30px; background-color:#111111; color:#ffffff; text-align:center;">
+              <h1 style="margin:0; font-size:22px; line-height:1.4;">
+                Confirmación de inscripción
+              </h1>
+            </td>
+          </tr>
+
+          <!-- MENSAJE DE BIENVENIDA -->
+          <tr>
+            <td style="padding:25px 30px 10px 30px; color:#333333; font-size:15px; line-height:1.6;">
+              <p style="margin:0 0 12px 0;">
+                Hola <strong>{{NOMBRE_COMPLETO}}</strong>,
+              </p>
+              <p style="margin:0 0 12px 0;">
+                Te confirmamos que tu inscripción para el evento
+                <strong>"{{SHOW_TITULO}}"</strong> se registró correctamente.
+              </p>
+              <p style="margin:0 0 12px 0;">
+                A continuación te dejamos los datos del evento y de tu inscripción.
+              </p>
+            </td>
+          </tr>
+
+          <!-- TÍTULO: DETALLES DEL EVENTO -->
+          <tr>
+            <td style="padding:10px 30px 5px 30px;">
+              <h2 style="margin:0 0 8px 0; font-size:18px; color:#111111;">
+                Detalles del evento
+              </h2>
+            </td>
+          </tr>
+
+          <!-- TABLA: INFORMACIÓN DEL EVENTO -->
+          <tr>
+            <td style="padding:0 30px 20px 30px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-size:14px; color:#333333;">
+                <tr>
+                  <td style="padding:4px 0; width:140px; font-weight:bold;">Título:</td>
+                  <td style="padding:4px 0;">{{SHOW_TITULO}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:bold; vertical-align:top;">Descripción:</td>
+                  <td style="padding:4px 0;">{{SHOW_DESCRIPCION}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:bold;">Fecha y hora:</td>
+                  <td style="padding:4px 0;">{{FECHA_EVENTO_FORMATEADA}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- TÍTULO: TUS DATOS -->
+          <tr>
+            <td style="padding:10px 30px 5px 30px;">
+              <h2 style="margin:0 0 8px 0; font-size:18px; color:#111111;">
+                Tus datos de inscripción
+              </h2>
+            </td>
+          </tr>
+
+          <!-- TABLA: DATOS DEL INSCRIPTO -->
+          <tr>
+            <td style="padding:0 30px 20px 30px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-size:14px; color:#333333;">
+                <tr>
+                  <td style="padding:4px 0; width:140px; font-weight:bold;">Nombre:</td>
+                  <td style="padding:4px 0;">{{NOMBRE_COMPLETO}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:bold;">Email:</td>
+                  <td style="padding:4px 0;">{{EMAIL}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:bold;">Teléfono:</td>
+                  <td style="padding:4px 0;">{{TELEFONO}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:bold;">Cantidad de entradas:</td>
+                  <td style="padding:4px 0;">{{CANTIDAD_ENTRADAS}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:bold;">Fecha de inscripción:</td>
+                  <td style="padding:4px 0;">{{FECHA_INSCRIPCION}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- INSTRUCCIONES PERSONALIZABLES -->
+          <!-- 👇 EDITA ESTA SECCIÓN PARA PERSONALIZAR EL MENSAJE POR EVENTO -->
+          <tr>
+            <td style="padding:0 30px 20px 30px; font-size:14px; color:#333333; line-height:1.6;">
+              <p style="margin:0 0 12px 0;">
+                No es necesario que hagas nada, ni busques las entradas en ningún lado, simplemente vení 15 minutos antes de la función con este mail y presentalo en la puerta.
+              </p>
+              <p style="margin:0 0 12px 0;">
+                Si querés sumar más entradas, todavía quedan algunas disponibles en Plateanet o en la boletería del Paseo La Plaza.
+              </p>
+              <p style="margin:0 0 12px 0;">
+                Ah, y no te olvides: las entradas pagas incluyen consumición de cortesía. 🤓
+              </p>
+              <p style="margin:0 0 12px 0;">
+                Si finalmente no podés venir, avisanos así podemos liberar tu entrada para que alguien más la aproveche.
+              </p>
+              <p style="margin:0;">
+                ¡Nos vemos ahí!<br>
+                <strong>Gabo</strong>
+              </p>
+            </td>
+          </tr>
+
+          <!-- AVISO LEGAL / ACLARACIÓN -->
+          <tr>
+            <td style="padding:0 30px 20px 30px; font-size:13px; color:#666666; line-height:1.6;">
+              <p style="margin:0 0 10px 0;">
+                Si alguno de estos datos no es correcto, por favor respondé a este mail indicando la corrección.
+              </p>
+              <p style="margin:0;">
+                Si no fuiste vos quien realizó esta inscripción, simplemente ignorá este mensaje.
+              </p>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="padding:15px 30px 25px 30px; font-size:13px; color:#999999; text-align:center; border-top:1px solid #eeeeee;">
+              <p style="margin:0;">
+                ¡Gracias por inscribirte! Nos vemos en "{{SHOW_TITULO}}".
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+

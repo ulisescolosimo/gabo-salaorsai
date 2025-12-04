@@ -7,6 +7,7 @@ export interface Show {
   hora_evento?: string;   // Hora del evento (HH:MM)
   cupo_total: number;
   cupo_disponible: number;
+  email_template?: string; // Template HTML personalizado para el email de confirmación
   created_at: string;
   updated_at: string;
 }

@@ -49,6 +49,7 @@ export const db = {
           cupo_total: show.cupo_total,
           fecha_evento: show.fecha_evento || null,
           hora_evento: show.hora_evento || null,
+          email_template: show.email_template || null,
           updated_at: new Date().toISOString(),
         })
         .eq('id', show.id)
@@ -96,6 +97,7 @@ export const db = {
         cupo_disponible: show.cupo_total!, // Empieza igual al cupo total
         fecha_evento: show.fecha_evento || null,
         hora_evento: show.hora_evento || null,
+        email_template: show.email_template || null,
       };
 
       const { data, error } = await supabase

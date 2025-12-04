@@ -1,0 +1,239 @@
+{
+  "name": "Gabo Flow con Templates Dinámicos",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2ef6c45f-ef60-456b-b1c5-e8d8a7249193",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "webhook-node",
+      "name": "Webhook",
+      "webhookId": "2ef6c45f-ef60-456b-b1c5-e8d8a7249193"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener los datos del webhook\nconst inscripto = $input.item.json.body.inscripto;\nconst show = $input.item.json.body.show;\n\n// Template HTML por defecto\nconst templatePorDefecto = `<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Confirmación de inscripción</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n</head>\n\n<body style=\"margin:0; padding:0; background-color:#f4f4f4; font-family: Arial, Helvetica, sans-serif;\">\n  <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f4; padding:20px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e0e0e0;\">\n\n          <tr>\n            <td style=\"padding:20px 30px; background-color:#111111; color:#ffffff; text-align:center;\">\n              <h1 style=\"margin:0; font-size:22px; line-height:1.4;\">\n                Confirmación de inscripción\n              </h1>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:25px 30px 10px 30px; color:#333333; font-size:15px; line-height:1.6;\">\n              <p style=\"margin:0 0 12px 0;\">\n                Hola <strong>{{NOMBRE_COMPLETO}}</strong>,\n              </p>\n              <p style=\"margin:0 0 12px 0;\">\n                Te confirmamos que tu inscripción para el evento\n                <strong>"{{SHOW_TITULO}}"</strong> se registró correctamente.\n              </p>\n              <p style=\"margin:0 0 12px 0;\">\n                A continuación te dejamos los datos del evento y de tu inscripción.\n              </p>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:10px 30px 5px 30px;\">\n              <h2 style=\"margin:0 0 8px 0; font-size:18px; color:#111111;\">\n                Detalles del evento\n              </h2>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:0 30px 20px 30px;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"font-size:14px; color:#333333;\">\n                <tr>\n                  <td style=\"padding:4px 0; width:140px; font-weight:bold;\">Título:</td>\n                  <td style=\"padding:4px 0;\">{{SHOW_TITULO}}</td>\n                </tr>\n                <tr>\n                  <td style=\"padding:4px 0; font-weight:bold; vertical-align:top;\">Descripción:</td>\n                  <td style=\"padding:4px 0;\">{{SHOW_DESCRIPCION}}</td>\n                </tr>\n                <tr>\n                  <td style=\"padding:4px 0; font-weight:bold;\">Fecha y hora:</td>\n                  <td style=\"padding:4px 0;\">{{FECHA_EVENTO_FORMATEADA}}</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:10px 30px 5px 30px;\">\n              <h2 style=\"margin:0 0 8px 0; font-size:18px; color:#111111;\">\n                Tus datos de inscripción\n              </h2>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:0 30px 20px 30px;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"font-size:14px; color:#333333;\">\n                <tr>\n                  <td style=\"padding:4px 0; width:140px; font-weight:bold;\">Nombre:</td>\n                  <td style=\"padding:4px 0;\">{{NOMBRE_COMPLETO}}</td>\n                </tr>\n                <tr>\n                  <td style=\"padding:4px 0; font-weight:bold;\">Email:</td>\n                  <td style=\"padding:4px 0;\">{{EMAIL}}</td>\n                </tr>\n                <tr>\n                  <td style=\"padding:4px 0; font-weight:bold;\">Teléfono:</td>\n                  <td style=\"padding:4px 0;\">{{TELEFONO}}</td>\n                </tr>\n                <tr>\n                  <td style=\"padding:4px 0; font-weight:bold;\">Cantidad de entradas:</td>\n                  <td style=\"padding:4px 0;\">{{CANTIDAD_ENTRADAS}}</td>\n                </tr>\n                <tr>\n                  <td style=\"padding:4px 0; font-weight:bold;\">Fecha de inscripción:</td>\n                  <td style=\"padding:4px 0;\">{{FECHA_INSCRIPCION}}</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:0 30px 20px 30px; font-size:14px; color:#333333; line-height:1.6;\">\n              <p style=\"margin:0 0 12px 0;\">\n                No es necesario que hagas nada, ni busques las entradas en ningún lado, simplemente vení 15 minutos antes de la función con este mail y presentalo en la puerta.\n              </p>\n              <p style=\"margin:0 0 12px 0;\">\n                Si querés sumar más entradas, todavía quedan algunas disponibles en Plateanet o en la boletería del Paseo La Plaza.\n              </p>\n              <p style=\"margin:0 0 12px 0;\">\n                Ah, y no te olvides: las entradas pagas incluyen consumición de cortesía. 🤓\n              </p>\n              <p style=\"margin:0 0 12px 0;\">\n                Si finalmente no podés venir, avisanos así podemos liberar tu entrada para que alguien más la aproveche.\n              </p>\n              <p style=\"margin:0;\">\n                ¡Nos vemos ahí!<br>\n                <strong>Gabo</strong>\n              </p>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:0 30px 20px 30px; font-size:13px; color:#666666; line-height:1.6;\">\n              <p style=\"margin:0 0 10px 0;\">\n                Si alguno de estos datos no es correcto, por favor respondé a este mail indicando la corrección.\n              </p>\n              <p style=\"margin:0;\">\n                Si no fuiste vos quien realizó esta inscripción, simplemente ignorá este mensaje.\n              </p>\n            </td>\n          </tr>\n\n          <tr>\n            <td style=\"padding:15px 30px 25px 30px; font-size:13px; color:#999999; text-align:center; border-top:1px solid #eeeeee;\">\n              <p style=\"margin:0;\">\n                ¡Gracias por inscribirte! Nos vemos en \"{{SHOW_TITULO}}\".\n              </p>\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n</body>\n</html>`;\n\n// Usar el template personalizado o el por defecto\nlet emailTemplate = show.email_template || templatePorDefecto;\n\n// Preparar las variables de reemplazo\nconst nombreCompleto = `${inscripto.nombre} ${inscripto.apellido}`;\nconst telefono = inscripto.telefono || 'No especificado';\n\n// Reemplazar todas las variables en el template\nemailTemplate = emailTemplate\n  .replace(/\\{\\{NOMBRE_COMPLETO\\}\\}/g, nombreCompleto)\n  .replace(/\\{\\{EMAIL\\}\\}/g, inscripto.email)\n  .replace(/\\{\\{TELEFONO\\}\\}/g, telefono)\n  .replace(/\\{\\{CANTIDAD_ENTRADAS\\}\\}/g, inscripto.cantidad_entradas.toString())\n  .replace(/\\{\\{SHOW_TITULO\\}\\}/g, show.titulo)\n  .replace(/\\{\\{SHOW_DESCRIPCION\\}\\}/g, show.descripcion)\n  .replace(/\\{\\{FECHA_EVENTO_FORMATEADA\\}\\}/g, show.fecha_evento_formateada)\n  .replace(/\\{\\{FECHA_INSCRIPCION\\}\\}/g, inscripto.fecha_inscripcion);\n\n// Retornar todos los datos\nreturn {\n  inscripto: inscripto,\n  show: show,\n  emailHtml: emailTemplate\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        200,
+        0
+      ],
+      "id": "code-process-template",
+      "name": "Procesar Template Email"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.inscripto.email }}",
+        "subject": "=Confirmación: {{ $json.show.titulo }}",
+        "message": "={{ $json.emailHtml }}",
+        "options": {
+          "replyTo": "gabo@orsai.org"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        0
+      ],
+      "id": "gmail-send",
+      "name": "Enviar Email",
+      "webhookId": "6b61ec3c-e64f-45d9-83fd-1a973aea7792",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "AGX8Jl3yL8KAoZIM",
+          "name": "Gmail account 10"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "121hZIUDuNEf7Q2iDHBRDpE4ca0FyOspwgMxwDO3OLeo",
+          "mode": "list",
+          "cachedResultName": "Reservas de Invitados Sala Orsai",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/121hZIUDuNEf7Q2iDHBRDpE4ca0FyOspwgMxwDO3OLeo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/121hZIUDuNEf7Q2iDHBRDpE4ca0FyOspwgMxwDO3OLeo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nombre": "={{ $('Procesar Template Email').item.json.inscripto.nombre }}",
+            "apellido": "={{ $('Procesar Template Email').item.json.inscripto.apellido }}",
+            "email": "={{ $('Procesar Template Email').item.json.inscripto.email }}",
+            "telefono": "={{ $('Procesar Template Email').item.json.inscripto.telefono }}",
+            "cantidad_entradas": "={{ $('Procesar Template Email').item.json.inscripto.cantidad_entradas }}",
+            "show_titulo": "={{ $('Procesar Template Email').item.json.show.titulo }}",
+            "show_fecha": "={{ $('Procesar Template Email').item.json.show.fecha_evento }}",
+            "show_hora": "={{ $('Procesar Template Email').item.json.show.hora_evento }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apellido",
+              "displayName": "apellido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cantidad_entradas",
+              "displayName": "cantidad_entradas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "show_titulo",
+              "displayName": "show_titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "show_fecha",
+              "displayName": "show_fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "show_hora",
+              "displayName": "show_hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        600,
+        0
+      ],
+      "id": "google-sheets-append",
+      "name": "Guardar en Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5PnjM9aJ2p1H0Et8",
+          "name": "Google Sheets account 8"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar Template Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Template Email": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar Email": {
+      "main": [
+        [
+          {
+            "node": "Guardar en Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b8ceb87af54be22162edb836d687e5974b13d6340c135e050080cc31432be6aa"
+  },
+  "tags": []
+}
+

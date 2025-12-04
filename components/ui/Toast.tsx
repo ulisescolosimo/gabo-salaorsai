@@ -106,7 +106,7 @@ export const Toast: React.FC<ToastProps> = ({
 };
 
 interface ToastContainerProps {
-  toasts: ToastProps[];
+  toasts: Omit<ToastProps, 'onClose'>[];
   onClose: (id: string) => void;
 }
 

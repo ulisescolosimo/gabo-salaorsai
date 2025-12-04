@@ -49,6 +49,8 @@ export const emailService = {
             fecha_evento: show.fecha_evento || null,
             hora_evento: show.hora_evento || null,
             fecha_evento_formateada: formatFechaEvento(show),
+            // Enviar el template personalizado si existe
+            email_template: show.email_template || null,
           },
         }),
       });
