@@ -22,6 +22,7 @@ export const PublicForm: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [headerText, setHeaderText] = useState('');
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -34,6 +35,7 @@ export const PublicForm: React.FC = () => {
 
   useEffect(() => {
     loadShows();
+    loadHeaderText();
   }, []);
 
   const loadShows = async () => {
@@ -48,6 +50,22 @@ export const PublicForm: React.FC = () => {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadHeaderText = async () => {
+    try {
+      const config = await db.getConfig('public_form_header');
+      if (config) {
+        setHeaderText(config.value);
+      } else {
+        // Texto por defecto si no existe configuración
+        setHeaderText('# Reservá tus entradas para la Sala Orsai.\n\n**Invitaciones exclusivas para miembros de Comunidad Orsai.**');
+      }
+    } catch (err) {
+      console.error('Error cargando texto del encabezado:', err);
+      // Usar texto por defecto en caso de error
+      setHeaderText('# Reservá tus entradas para la Sala Orsai.\n\n**Invitaciones exclusivas para miembros de Comunidad Orsai.**');
     }
   };
 
@@ -136,20 +154,10 @@ export const PublicForm: React.FC = () => {
       
       <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-4xl mb-4">
-            Reservá tus entradas para la Sala Orsai.
-          </h1>
-          <div className="text-base text-gray-600 space-y-3 max-w-3xl mx-auto">
-            <p className="font-medium">
-              Invitaciones exclusivas para miembros de Comunidad Orsai.
-            </p>
-            <p>
-              Simplemente completá el formulario. Si ya lo hiciste, llegá 15 minutos antes de la función a la puerta de la Sala Casals en el Paseo La Plaza. Te resultará más cómodo entrar por Montevideo 310.
-            </p>
-            <p>
-              Por favor, reservá solo si estás seguro de que podés venir. <br /> Así le das la oportunidad a otra persona de disfrutar el evento.
-            </p>
-          </div>
+          <div 
+            className="prose prose-lg prose-orange max-w-3xl mx-auto public-form-header"
+            dangerouslySetInnerHTML={{ __html: headerText }}
+          />
         </div>
 
         <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">

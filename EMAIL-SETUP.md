@@ -197,3 +197,4 @@ GEMINI_API_KEY=AIzaSyACaa3QSiEZvhqaM5K0GbVkRTZBbT49atQ
 ¿Qué proveedor de email vas a usar? Puedo ayudarte con la configuración específica.
 
 
+

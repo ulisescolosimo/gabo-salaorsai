@@ -1,5 +1,5 @@
 import { supabase } from './supabaseClient';
-import { Show, Inscripto, Administrador } from '../types';
+import { Show, Inscripto, Administrador, Config } from '../types';
 import bcrypt from 'bcryptjs';
 
 export const db = {
@@ -341,6 +341,56 @@ export const db = {
     }
 
     return data;
+  },
+
+  // ==================== CONFIGURACIONES ====================
+
+  getConfig: async (key: string): Promise<Config | undefined> => {
+    const { data, error } = await supabase
+      .from('config')
+      .select('*')
+      .eq('key', key)
+      .single();
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return undefined;
+      }
+      console.error('Error al obtener configuración:', error);
+      throw new Error(`Error al cargar la configuración: ${error.message}`);
+    }
+
+    return data;
+  },
+
+  updateConfig: async (key: string, value: string): Promise<Config> => {
+    const { data, error } = await supabase
+      .from('config')
+      .update({ value })
+      .eq('key', key)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error al actualizar configuración:', error);
+      throw new Error(`Error al actualizar la configuración: ${error.message}`);
+    }
+
+    return data;
+  },
+
+  getAllConfigs: async (): Promise<Config[]> => {
+    const { data, error } = await supabase
+      .from('config')
+      .select('*')
+      .order('key', { ascending: true });
+
+    if (error) {
+      console.error('Error al obtener configuraciones:', error);
+      throw new Error(`Error al cargar las configuraciones: ${error.message}`);
+    }
+
+    return data || [];
   },
 };
 

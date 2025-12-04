@@ -40,3 +40,10 @@ export interface Administrador {
   created_at: string;
   updated_at: string;
 }
+
+export interface Config {
+  key: string;
+  value: string;
+  description?: string;
+  updated_at: string;
+}

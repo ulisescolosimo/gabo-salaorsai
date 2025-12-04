@@ -133,3 +133,4 @@ Tu proyecto ahora está conectado a Supabase. Todos los datos se guardarán en l
 - [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript/introduction)
 
 
+

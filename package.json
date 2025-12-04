@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.86.0",
+    "@tiptap/extension-link": "^3.12.1",
+    "@tiptap/extension-text-align": "^3.12.1",
+    "@tiptap/extension-underline": "^3.12.1",
+    "@tiptap/react": "^3.12.1",
+    "@tiptap/starter-kit": "^3.12.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -18,7 +23,9 @@
     "nodemailer": "^7.0.11",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.10.0",
+    "remark-gfm": "^4.0.1",
     "xlsx": "latest"
   },
   "devDependencies": {
